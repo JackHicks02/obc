@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { Button, ChakraProvider, Stack } from "@chakra-ui/react";
+import TableWrapper from "./components/spreadsheet/TableWrapper";
+import Map from "./components/map/TheMap";
+import TheMap from "./components/map/TheMap";
+import DataDisplay from "./pages/DataDisplay";
+import { MapProvider } from "./components/map/MapContext";
+
+import Home from "./pages/Home";
+import MainPage from "./pages/MainPage";
 
 function App() {
+  {
+    /* potential bug that can't be recreated consistently is that one of my set states isn't a function, this shouldn't happen aslong
+      as there is no live update to the code*/
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider>
+      <MapProvider>
+        <MainPage />
+      </MapProvider>
+    </ChakraProvider>
   );
 }
 
